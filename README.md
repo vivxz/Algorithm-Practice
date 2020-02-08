@@ -1,2 +1,2 @@
 # LeetCode
-Coding challenges & Solution
+Coding challenges & Solutions
