@@ -60,17 +60,30 @@ var romanToInt = function (s) {
 
   var total = 0;
 
-  for (var i = 0; i < s.length; i++) {
+  for (var i = 0; i <= s.length - 1; i++) {
     var current = dates[s[i]];
     var next = dates[s[i + 1]];
 
-    if (current > next) {
-      total += current;
-    } else if (current < next) {
-      total -= current;
+    if (current < next) {
+      total += next - current;
+      i++;
     } else {
       total += current;
     }
   }
   return total;
+
+  // for (var i = 0; i < s.length; i++) {
+  //   var current = dates[s[i]];
+  //   var next = dates[s[i + 1]];
+
+  //   if (current > next) {
+  //     total += current;
+  //   } else if (current < next) {
+  //     total -= current;
+  //   } else {
+  //     total += current;
+  //   }
+  // }
+  // return total;
 };
