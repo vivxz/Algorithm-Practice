@@ -15,17 +15,30 @@ Your algorithm should run in linear runtime complexity. Could you
 implement it using only constant extra space complexity?
 */
 
+// var missingNumber = function (nums) {
+//   if (nums.length === 0) {
+//     return 0;
+//   }
+//   var count = 0
+//   for (var i = 0; i < nums.length; i++) {
+//     if (!nums.includes(i)) {
+//       return i;
+//     } else {
+//       count++;
+//     }
+//   }
+//   return count;
+// };
+
 var missingNumber = function (nums) {
-  if (nums.length === 0) {
-    return 0;
-  }
-  var count = 0
+  var elementSum = 0;
+  var indexSum = 0;
+
   for (var i = 0; i < nums.length; i++) {
-    if (!nums.includes(i)) {
-      return i;
-    } else {
-      count++;
-    }
+    elementSum += nums[i];
+    indexSum += i;
   }
-  return count;
+
+  indexSum += nums.length;
+  return indexSum - elementSum;
 };
