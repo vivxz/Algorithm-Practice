@@ -19,9 +19,16 @@ the decimal part is truncated, 2 is returned.
 */
 
 var mySqrt = function (x) {
-  if (x === 0) {
-    return 0;
-  }
-
   return Math.floor(Math.sqrt(x));
 };
+
+// Alternative solution without using built in function
+/*
+mySqrt = function (x){
+  var answer = 1;
+  while (answer * answer <= x){
+    answer++;
+  }
+  return answer - 1;
+}
+*/
