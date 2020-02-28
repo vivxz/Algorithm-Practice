@@ -21,19 +21,55 @@ n is a 32-bit signed integer, within the range
 [−231, 231 − 1]
 */
 
-var myPow = function(x, n) {
-  if (n===0){
+var myPow = function(x, n){
+  if (n === 0) {
     return 1;
-  } 
-  
-  var absoluteN = Math.abs(n);
-  var results = absoluteN % 2 === 0 ? myPow(x * x, absoluteN/2) : myPow(x * x, (absoluteN - 1)/2) * x;
-  
-  return n < 0 ? 1/results : results;
+  }
+
+  if (n === 1){
+    return x;
+  }
+
+  if (x === 0){
+    return 0;
+  }
+
+  var pow = myPow(x * x, Math.floor(n/2));
+  if (n > 0) {
+    if (n % 2 === 0){
+      return pow;
+    } else {
+      return x * pow;
+    }
+  } else {
+    return myPow(1/x, -n)
+  }
 };
 
 /*
+var myPow = function (x, n) {
+  if (n === 0) {
+    return 1;
+  }
+
+  var absoluteN = Math.abs(n);
+  var results;
+  if (absoluteN % 2 === 0) {
+    results = myPow(x * x, absoluteN / 2)
+  } else {
+    results = myPow(x * x, (absoluteN - 1) / 2) * x;
+  }
+
+  if (n < 0) {
+    return 1 / results;
+  } else {
+    return results;
+  }
+};
+*/
+
+/*
 var myPow = function(x, n) {
-  return Math.pow(x,n)  
+  return Math.pow(x,n)
 };
 */
