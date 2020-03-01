@@ -28,16 +28,25 @@ Input: num = 123
 Output: 12
 */
 
+// var numberOfSteps = function (num) {
+//   var steps = 0;
+//   while (num !== 0) {
+//     if (num % 2 === 0) {
+//       num = num / 2;
+//       steps++;
+//     } else {
+//       num -= 1;
+//       steps++;
+//     }
+//   }
+//   return steps;
+// };
+
 var numberOfSteps = function (num) {
   var steps = 0;
   while (num !== 0) {
-    if (num % 2 === 0) {
-      num = num / 2;
-      steps++;
-    } else {
-      num -= 1;
-      steps++;
-    }
+    num % 2 === 0 ? num = num / 2 : num--;
+    steps++;
   }
   return steps;
 };
