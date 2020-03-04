@@ -18,13 +18,17 @@ Output: 31
 Explanation: The input binary string 11111111111111111111111111111101 has a total of thirty one '1' bits.
 */
 
+// var hammingWeight = function (n) {
+//   var string = n.toString(2);
+//   var count = 0;
+//   for (var i = 0; i < string.length; i++) {
+//     if (string[i] === '1') {
+//       count++;
+//     }
+//   }
+//   return count;
+// };
+
 var hammingWeight = function (n) {
-  var string = n.toString(2);
-  var count = 0;
-  for (var i = 0; i < string.length; i++) {
-    if (string[i] === '1') {
-      count++;
-    }
-  }
-  return count;
+  return n.toString(2).split("0").join('').length;
 };
