@@ -17,22 +17,34 @@ Input: [1,1,1,3,3,4,3,2,4,2]
 Output: true
 */
 
-var containsDuplicate = function (nums) {
-  if (nums.length === 0) {
-    return false;
-  }
+// var containsDuplicate = function (nums) {
+//   if (nums.length === 0) {
+//     return false;
+//   }
 
+//   var obj = {};
+//   for (var i = nums.length - 1; i >= 0; i--) {
+//     if (obj[nums[i]]) {
+//       obj[nums[i]]++;
+//     } else {
+//       obj[nums[i]] = 1;
+//     }
+//   }
+//   for (var key in obj) {
+//     if (obj[key] > 1) {
+//       return true;
+//     }
+//   }
+//   return false;
+// };
+
+var containsDuplicate = function (nums) {
   var obj = {};
   for (var i = nums.length - 1; i >= 0; i--) {
     if (obj[nums[i]]) {
-      obj[nums[i]]++;
+      return true;
     } else {
       obj[nums[i]] = 1;
-    }
-  }
-  for (var key in obj) {
-    if (obj[key] > 1) {
-      return true;
     }
   }
   return false;
