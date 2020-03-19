@@ -17,11 +17,17 @@ rotate 1 steps to the right: [99,-1,-100,3]
 rotate 2 steps to the right: [3,99,-1,-100]
 */
 
+// var rotate = function (nums, k) {
+//   while (k > 0) {
+//     var last = nums.pop();
+//     nums.unshift(last);
+//     k--;
+//   }
+//   return nums;
+// };
+
 var rotate = function (nums, k) {
-  while (k > 0) {
-    var last = nums.pop();
-    nums.unshift(last);
-    k--;
-  }
-  return nums;
+  k = k % nums.length;
+  var end = nums.splice(0,nums.length - k);
+  nums.push(...end)
 };
