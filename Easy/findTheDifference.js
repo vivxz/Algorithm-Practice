@@ -17,27 +17,37 @@ Explanation:
 'e' is the letter that was added.
 */
 
+// var findTheDifference = function (s, t) {
+//   var obj = {};
+//   for (var i = 0; i < s.length; i++) {
+//     if (obj[s[i]]) {
+//       obj[s[i]]++;
+//     } else {
+//       obj[s[i]] = 1;
+//     }
+//   }
+
+//   for (var k = 0; k < t.length; k++) {
+//     if (obj[t[k]]) {
+//       obj[t[k]]++;
+//     } else {
+//       obj[t[k]] = 1;
+//     }
+//   }
+
+//   for (var key in obj) {
+//     if (obj[key] % 2 !== 0) {
+//       return key;
+//     }
+//   }
+// };
+
 var findTheDifference = function (s, t) {
-  var obj = {};
-  for (var i = 0; i < s.length; i++) {
-    if (obj[s[i]]) {
-      obj[s[i]]++;
-    } else {
-      obj[s[i]] = 1;
-    }
-  }
-
-  for (var k = 0; k < t.length; k++) {
-    if (obj[t[k]]) {
-      obj[t[k]]++;
-    } else {
-      obj[t[k]] = 1;
-    }
-  }
-
-  for (var key in obj) {
-    if (obj[key] % 2 !== 0) {
-      return key;
+  s = s.split('').sort();
+  t = t.split('').sort();
+  for (var i = 0; i < t.length; i++) {
+    if (s[i] !== t[i]) {
+      return t[i];
     }
   }
 };
