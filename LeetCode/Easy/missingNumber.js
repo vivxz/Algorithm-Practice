@@ -30,15 +30,28 @@ implement it using only constant extra space complexity?
 //   return count;
 // };
 
+// var missingNumber = function (nums) {
+//   var elementSum = 0;
+//   var indexSum = 0;
+
+//   for (var i = 0; i < nums.length; i++) {
+//     elementSum += nums[i];
+//     indexSum += i;
+//   }
+
+//   indexSum += nums.length;
+//   return indexSum - elementSum;
+// };
+
 var missingNumber = function (nums) {
-  var elementSum = 0;
-  var indexSum = 0;
+  nums = nums.sort((a, b) => a - b)
 
-  for (var i = 0; i < nums.length; i++) {
-    elementSum += nums[i];
-    indexSum += i;
+  for (var i = 0; i <= nums.length; i++) {
+    if (nums.length === 1 && nums[0] === 0) {
+      return 1;
+    } else if (i !== nums[i]) {
+      return i;
+    }
   }
-
-  indexSum += nums.length;
-  return indexSum - elementSum;
 };
+
