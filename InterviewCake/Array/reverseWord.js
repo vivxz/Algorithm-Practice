@@ -7,21 +7,49 @@ The message has been mostly deciphered, but all the words are backward! Your col
 Write a function reverseWords() that takes a message as an array of characters and reverses the order of the words.
 */
 
+// function reverseWords(message) {
+
+//   // Decode the message by reversing the words
+//   message = message.join('').split(' '); // split creates a new array
+  
+//   var left = 0;
+//   var right = message.length - 1;
+  
+//   while (left < right) {
+//     var temp = message[left];
+//     message[left] = message[right];
+//     message[right] = temp;
+//     left++;
+//     right--;
+//   }
+//   message = message.join(' ')
+//   return message;
+// }
+
+/* IN PLACE SOLUTION */
 function reverseWords(message) {
 
   // Decode the message by reversing the words
-  message = message.join('').split(' '); // split creates a new array
-  
-  var left = 0;
-  var right = message.length - 1;
-  
-  while (left < right) {
-    var temp = message[left];
-    message[left] = message[right];
-    message[right] = temp;
-    left++;
-    right--;
+  // reversing all of the characters
+  reverseCharacter(message, 0, message.length - 1) 
+  // tracker
+  var currentIndex = 0;
+  for (var i = 0; i <= message.length; i++){
+    // looking for the end of the current word
+    if (i === message.length || message[i] === ' ') {
+      reverseCharacter(message, currentIndex, i - 1);
+      currentIndex = i + 1;
+    }
   }
-  message = message.join(' ')
-  return message;
 }
+  
+  
+  function reverseCharacter(message, left, right) {
+    while (left < right) {
+      var temp = message[left];
+      message[left] = message[right];
+      message[right] = temp;
+      left++;
+      right--;
+    }
+  }
