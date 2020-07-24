@@ -11,9 +11,35 @@ console.log(mergeArrays(myArray, alicesArray));
 // [1, 3, 4, 5, 6, 8, 10, 11, 12, 14, 15, 19]
 */
 
+// function mergeArrays(myArray, alicesArray) {
+
+//   // Combine the sorted arrays into one large sorted array
+//   const merged = myArray.concat(alicesArray);
+//   return merged.sort((a, b) => a -b);
+// }
+
+
 function mergeArrays(myArray, alicesArray) {
 
   // Combine the sorted arrays into one large sorted array
-  const merged = myArray.concat(alicesArray);
-  return merged.sort((a, b) => a -b);
+
+  const mergedArray = [];
+  let alicesIndex = 0;
+  let myIndex = 0;
+  let mergedIndex = 0;
+
+  while (mergedIndex < (myArray.length + alicesArray.length)) {
+    const myEnd = myIndex >= myArray.length;
+    const alicesEnd = alicesIndex >= alicesArray.length;
+    if (!myEnd && (alicesEnd ||
+      (myArray[myIndex] < alicesArray[alicesIndex]))) {
+      mergedArray[mergedIndex] = myArray[myIndex];
+      myIndex++;
+    } else {
+      mergedArray[mergedIndex] = alicesArray[alicesIndex];
+      alicesIndex++;
+    }
+    mergedIndex++;
+  }
+  return mergedArray;
 }
