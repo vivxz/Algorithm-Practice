@@ -16,17 +16,26 @@ Output: 2
 Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.
  */
 
-var lowestCommonAncestor = function(root, p, q) {
-  if (root === null) return null
-  if (q.val === root.val || p.val === root.val) {
-      return root
-  }
+// var lowestCommonAncestor = function(root, p, q) {
+//   if (root === null) return null
+//   if (q.val === root.val || p.val === root.val) {
+//       return root
+//   }
       
-  const treeLeft = lowestCommonAncestor(root.left, p, q);
-  const treeRight = lowestCommonAncestor(root.right, p, q);
+//   const treeLeft = lowestCommonAncestor(root.left, p, q);
+//   const treeRight = lowestCommonAncestor(root.right, p, q);
   
-  if (treeLeft === null) return treeRight;
-  if (treeRight === null) return treeLeft;
+//   if (treeLeft === null) return treeRight;
+//   if (treeRight === null) return treeLeft;
   
-  return root
+//   return root
+// };
+
+var lowestCommonAncestor = function(root, p, q) {
+  if (p.val < root.val && q.val < root.val){
+      return lowestCommonAncestor(root.left, p, q);
+  } else if (p.val > root.val && q.val > root.val) {
+      return lowestCommonAncestor(root.right, p, q);
+  }
+  return root;
 };
